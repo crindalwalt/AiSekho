@@ -39,9 +39,9 @@
     </nav>
 
     <div class="p-4 border-t border-gray-800">
-        <button class="w-full flex items-center space-x-3 p-3 text-red-400 hover:bg-red-400/10 rounded-xl transition">
-            <span>🚪</span>
-            <a class="text-sm font-medium">Logout</a>
-        </button>
+        <form action="{{ route('logout') }}" method="POST"> 
+            @csrf
+            <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg text-sm font-bold hover:bg-red-700 transition">Logout</button>
+            </form>
     </div>
 </aside>
