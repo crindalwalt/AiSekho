@@ -11,6 +11,18 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function aboutPage(){
+        return view('sites.about-us');
+    }
+    public function contactPage(){
+        return view('sites.contact-us');
+    }
+    public function addToCart(){
+        return view('sites.add-to-cart');
+    }
+
+
     public function homePage()
     {
         return view('sites.home');

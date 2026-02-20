@@ -11,11 +11,11 @@ use App\Http\Controllers\ProfileController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
-Route::get('/home', [CourseController::class, 'homePage'])->name('home');
+Route::get('/add-to-cart', [CourseController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/contact-us', [CourseController::class, 'contactPage'])->name('contact-us');
+Route::get('/about', [CourseController::class, 'aboutPage'])->name('about');
+Route::get('/', [CourseController::class, 'homePage'])->name('home');
 Route::get('/teachers', [CourseController::class, 'allTeachers'])->name('teachers');
 Route::get('/teacher-detail', [CourseController::class, 'singleTeacher'])->name('teacher-detail');
 Route::get('/course-detail', [CourseController::class, 'singleCourse'])->name('course-detail');

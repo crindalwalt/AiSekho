@@ -41,7 +41,7 @@
     <div class="p-4 border-t border-gray-800">
         <button class="w-full flex items-center space-x-3 p-3 text-red-400 hover:bg-red-400/10 rounded-xl transition">
             <span>🚪</span>
-            <span class="text-sm font-medium">Logout</span>
+            <a class="text-sm font-medium">Logout</a>
         </button>
     </div>
 </aside>

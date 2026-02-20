@@ -3,13 +3,13 @@
             AI_<span class="lime-accent">Sekho</span>
         </div>
         <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-            <a href="#" class="hover:text-white">Courses</a>
-            <a href="#" class="hover:text-white">Teachers</a>
-            <a href="#" class="hover:text-white">About Us</a>
-            <a href="#" class="hover:text-white">Contact Us</a>
+            <a href="{{ route('home') }}" class="hover:text-white">Courses</a>
+            <a href="{{ route('teachers') }}" class="hover:text-white">Teachers</a>
+            <a href="{{ route('about') }}" class="hover:text-white">About Us</a>
+            <a href="{{ route('contact-us') }}" class="hover:text-white">Contact Us</a>
         </div>
         <div class="flex items-center space-x-6">
-            <a href="#" class="text-sm font-medium">Login</a>
-            <a href="#" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-gray-200 transition">Registration</a>
+            <a href="{{ route('login') }}" class="text-sm font-medium">Login</a>
+            <a href="{{ route('register') }}" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-gray-200 transition">Registration</a>
         </div>
     </nav>
