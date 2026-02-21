@@ -61,6 +61,12 @@ class AdminController extends Controller
     public function teacherShow(){
         return view('admin.teacher.show');
     }
+      public function dashboardstudent(){
+        return view('admin.student.studentdashboard');
+    }
+     public function dashboardteacher(){
+        return view('admin.teacher.teacherdashboard');
+    } 
 
     public function teacherStore(Request $request)
     {

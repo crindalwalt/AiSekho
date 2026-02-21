@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | Public Routes
@@ -43,6 +43,7 @@ Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
     Route::post('/students', [adminController::class, 'studentStore'])->name('admin.students.store');
     Route::get('/students/show', [adminController::class, 'studentShow'])->name('admin.students.show');
     Route::get('/students/index', [adminController::class, 'studentEdit'])->name('admin.students.index');
+    Route::get('/studentdashboard',[adminController::class,'dashboardstudent'])->name('dash.student');
 
     // Teachers
     Route::get('/teachers', [adminController::class, 'teacherIndex'])->name('admin.teachers.index');
@@ -54,6 +55,17 @@ Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
 
 
 // Public dashboard route
+
+Route::get('/studentdashboard', [adminController::class, 'dashboardstudent'])
+    ->middleware(['auth','verified'])
+    ->name('student.dashboard');
+    Route::get('/studentdashboard', [adminController::class, 'dashboardstudent'])
+    ->middleware(['auth','verified'])
+    ->name('student.dashboard');
+    Route::get('/teacherdashboard', [adminController::class, 'dashboardteacher'])
+    ->middleware(['auth','verified'])
+    ->name('teacher.dashboard');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
