@@ -14,23 +14,31 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
             
+        @if ($course->isNotEmpty())
+        @foreach ($course as $item)
             <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800 hover:border-lime-400 transition group">
                 <div class="h-40 bg-gray-800 rounded-2xl mb-4 overflow-hidden">
                     <div class="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-3xl">🤖</div>
                 </div>
-                <span class="text-xs font-bold lime-accent">AI & ML</span>
-                <h3 class="text-xl font-bold mt-2">Mastering ChatGPT</h3>
-                <p class="text-gray-400 text-sm mt-3 line-clamp-2">Learn prompt engineering and automate your daily workflow using advanced AI tools.</p>
+                <span class="text-xs font-bold lime-accent">{{ $item->category }}</span>
+                <h3 class="text-xl font-bold mt-2">{{ $item->title }}</h3>
+                <p class="text-gray-400 text-sm mt-3 line-clamp-2">{{ $item->description }}</p>
                 <div class="mt-4 flex items-center justify-between">
-                    <span class="text-lg font-bold">$49.99</span>
-                    <button class="text-sm font-semibold underline hover:text-white">Read More</button>
+                    <span class="text-lg font-bold">${{ $item->price }}</span>
+                    <a href="{{ route('course-detail', $item->slug) }}" class="text-sm font-semibold underline hover:text-white">Read More</a>
                 </div>
                 <button class="w-full mt-6 bg-lime-accent text-black font-bold py-3 rounded-xl hover:opacity-90 transition">
                     Add to Cart
                 </button>
             </div>
+            
+        @endforeach
+        @else
+            <p class="text-gray-400 text-sm mt-3">No courses available at the moment. Please check back later.</p>
+            
+        @endif
 
-            <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800 hover:border-lime-400 transition">
+            <!-- <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800 hover:border-lime-400 transition">
                 <div class="h-40 bg-gray-800 rounded-2xl mb-4 overflow-hidden">
                     <div class="w-full h-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-3xl">💻</div>
                 </div>
@@ -60,7 +68,7 @@
                 <button class="w-full mt-6 bg-lime-accent text-black font-bold py-3 rounded-xl hover:opacity-90 transition">
                     Add to Cart
                 </button>
-            </div>
+            </div> -->
 
         </div>
     </section>

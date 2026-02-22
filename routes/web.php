@@ -12,13 +12,13 @@ use App\Http\Controllers\StudentController;
 */
 
 
-Route::get('/add-to-cart', [CourseController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/add-to-cart/{slug}', [CourseController::class, 'addToCart'])->name('add-to-cart');
 Route::get('/contact-us', [CourseController::class, 'contactPage'])->name('contact-us');
 Route::get('/about', [CourseController::class, 'aboutPage'])->name('about');
 Route::get('/', [CourseController::class, 'homePage'])->name('home');
 Route::get('/teachers', [CourseController::class, 'allTeachers'])->name('teachers');
-Route::get('/teacher-detail', [CourseController::class, 'singleTeacher'])->name('teacher-detail');
-Route::get('/course-detail', [CourseController::class, 'singleCourse'])->name('course-detail');
+Route::get('/teacher-detail/{slug}', [CourseController::class, 'singleTeacher'])->name('teacher-detail');
+Route::get('/course-detail/{slug}', [CourseController::class, 'singleCourse'])->name('course-detail');
 
 /*
 |--------------------------------------------------------------------------
