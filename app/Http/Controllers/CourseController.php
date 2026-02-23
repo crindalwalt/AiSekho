@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Teacher;
 use App\Models\Student;
 use App\Http\Requests\StoreCourseRequest;
@@ -13,22 +14,25 @@ class CourseController extends Controller
      * Display a listing of the resource.
      */
 
-    public function aboutPage(){
+    public function aboutPage()
+    {
         return view('sites.about-us');
     }
-    public function contactPage(){
+    public function contactPage()
+    {
         return view('sites.contact-us');
     }
-    public function addToCart($slug){
-   $addToCard = Course::where("slug", $slug)->first();
-        return view('sites.add-to-cart', compact('singleCourse'));
+    public function addToCart($slug)
+    {
+        $singleCourse = Course::where("slug", $slug)->first();
+        return view('sites.add-to-card', compact('singleCourse'));
     }
 
-//    Courses page
+    //    Courses page
     public function homePage()
 
     {
-        $course= Course::latest()->get();
+        $course = Course::latest()->get();
         return view('sites.home', compact('course'));
     }
 
@@ -36,21 +40,21 @@ class CourseController extends Controller
     {
         $singleCourse = Course::with('teacher')->where("slug", $slug)->first();
         return view('sites.course-detail', compact('singleCourse'));
-  }
+    }
 
 
-  // Teachers page
+    // Teachers page
 
-  public function allTeachers()
+    public function allTeachers()
     {
         $teacher = Teacher::latest()->get();
         return view('sites.teachers', compact('teacher'));
     }
 
-  public function singleTeacher($slug)
+    public function singleTeacher($slug)
 
     {
         $singleTeacher = Teacher::with('courses')->where("slug", $slug)->first();
         return view('sites.teacher-detail', compact('singleTeacher'));
-}
+    }
 }

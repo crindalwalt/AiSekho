@@ -50,7 +50,7 @@ class CourseFactory extends Factory
             ]),
 
             // Because teacher_id is STRING in your migration
-            'teacher_id' => fake()->uuid(),
+            'teacher_id' => fake()->numberBetween(1, 10),
 
         ];
     }
@@ -63,21 +63,21 @@ class CourseFactory extends Factory
 
     public function published()
     {
-        return $this->state(fn () => [
+        return $this->state(fn() => [
             'status' => 'published',
         ]);
     }
 
     public function draft()
     {
-        return $this->state(fn () => [
+        return $this->state(fn() => [
             'status' => 'draft',
         ]);
     }
 
     public function beginner()
     {
-        return $this->state(fn () => [
+        return $this->state(fn() => [
             'level' => 'beginner',
         ]);
     }
