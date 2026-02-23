@@ -24,7 +24,8 @@ class CourseFactory extends Factory
             'slug' => Str::slug($name) . '-' . Str::random(5),
             'thumbnail' => 'courses/default.jpg',
             'video_url' => fake()->optional()->url(),
-
+            'category' => fake()->randomElement(['Programming', 'Design', 'Marketing', 'Business', 'Photography']),
+            'duration' => fake()->numberBetween(1, 100),
             'level' => fake()->randomElement([
                 'beginner',
                 'intermediate',

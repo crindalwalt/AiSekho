@@ -12,6 +12,9 @@ public function teacher(){
     return $this->belongsTo(Teacher::class);}
 
 
+
+    protected $guarded = [];
+
     /** @use HasFactory<\Database\Factories\CourseFactory> */
     use HasFactory;
 }
