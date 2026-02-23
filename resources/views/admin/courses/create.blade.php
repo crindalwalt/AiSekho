@@ -27,6 +27,10 @@
                                value="{{ old('title') }}"
                                placeholder="e.g., Mastering Advanced JavaScript"
                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                               @error("title")
+                               <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                   
+                               @enderror
                     </div>
 
                     <!-- Course Description -->
@@ -35,6 +39,9 @@
                         <textarea name="description" rows="4"
                                   placeholder="Write a compelling description for your course..."
                                   class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition resize-none">{{ old('description') }}</textarea>
+                                  @error("description")
+                                  <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                  @enderror
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
@@ -47,6 +54,9 @@
                                        value="{{ old('price') }}"
                                        placeholder="99.99" step="0.01"
                                        class="flex-1 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                       @error("price")
+                                       <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                       @enderror
                             </div>
                         </div>
 
@@ -57,6 +67,9 @@
                                    value="{{ old('duration') }}"
                                    placeholder="40"
                                    class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                      @error("duration")    
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                         </div>
                     </div>
 
@@ -87,6 +100,10 @@
                                 <option value="development" {{ old('category') == 'development' ? 'selected' : '' }}>Development</option>
                                 <option value="business" {{ old('category') == 'business' ? 'selected' : '' }}>Business</option>
                             </select>
+                            @error("category")
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                
+                            @enderror
                         </div>
                     </div>
 

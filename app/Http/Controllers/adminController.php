@@ -18,14 +18,20 @@ class AdminController extends Controller
         return view('admin.courses.create');
     }
 
-    public function courseIndex(){
-        return view('admin.courses.index');
-    }
+   
+   
+   
+   public function courseIndex(){
+    $listCourse = Course::latest()->get();
+
+    return view('admin.courses.index', compact('listCourse'));
+}
 
     public function courseShow(){
+        
         return view('admin.courses.show');
     }
-
+// Course Store Method
     public function courseStore(Request $request)
     {
         $validatedData = $request->validate([
@@ -67,6 +73,9 @@ class AdminController extends Controller
      public function dashboardteacher(){
         return view('admin.teacher.teacherdashboard');
     } 
+
+
+/// Teacher Store Method
 
     public function teacherStore(Request $request)
     {

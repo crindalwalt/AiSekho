@@ -53,18 +53,20 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-800">
-                        <tr class="hover:bg-white/5 transition">
+                       @if ($listCourse->isNotEmpty())
+                       @foreach ($listCourse as $item )
+                            <tr class="hover:bg-white/5 transition">
                             <td class="px-8 py-5">
                                 <div>
-                                    <p class="text-sm font-medium">Mastering ChatGPT</p>
-                                    <p class="text-xs text-gray-400 mt-1">AI & ML</p>
+                                    <p class="text-sm font-medium">{{ $item->title }}</p>
+                                    <p class="text-xs text-gray-400 mt-1">{{ $item->category }}</p>
                                 </div>
                             </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">Dr. Ahmed Hassan</td>
-                            <td class="px-8 py-5 text-sm font-bold">342</td>
-                            <td class="px-8 py-5 text-sm font-bold">$49.99</td>
+                            <td class="px-8 py-5 text-sm text-gray-300">{{ $item->name }}</td>
+                            <td class="px-8 py-5 text-sm font-bold">{{ $item->students_count }}</td>
+                            <td class="px-8 py-5 text-sm font-bold">${{ $item->price }}</td>
                             <td class="px-8 py-5">
-                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">Active</span>
+                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">{{ $item->status }}</span>
                             </td>
                             <td class="px-8 py-5">
                                 <div class="flex gap-2">
@@ -74,7 +76,10 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="hover:bg-white/5 transition">
+                       @endforeach
+                           
+                       @endif
+                        <!-- <tr class="hover:bg-white/5 transition">
                             <td class="px-8 py-5">
                                 <div>
                                     <p class="text-sm font-medium">AI-Driven UI Design</p>
@@ -115,7 +120,7 @@
                                     <button class="text-red-400 hover:text-red-300 text-sm font-medium">Delete</button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
