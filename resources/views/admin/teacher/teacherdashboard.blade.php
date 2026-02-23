@@ -24,7 +24,7 @@
                 <a href="#" class="block p-3 rounded-xl bg-[#1e2128] lime-accent font-medium italic">Instructor Mode</a>
                 <a href="#" class="block p-3 rounded-xl hover:bg-[#1e2128] transition">My Courses</a>
                 <a href="#" class="block p-3 rounded-xl hover:bg-[#1e2128] transition">Earnings</a>
-                <a href="#" class="block p-3 rounded-xl text-red-400 mt-10">Logout</a>
+                <a href="{{ route('logout') }}" class="block p-3 rounded-xl text-red-400 mt-10">Logout</a>
             </nav>
         </aside>
 

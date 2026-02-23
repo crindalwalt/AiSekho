@@ -72,6 +72,7 @@ class AdminController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
+            
             'email' => 'required|email|unique:teachers,email',
             'specialty' => 'required|string|max:255',
         ]);
