@@ -1,38 +1,85 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/add-to-cart/{slug}', [CourseController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/contact-us', [CourseController::class, 'contactPage'])->name('contact-us');
+Route::get('/about', [CourseController::class, 'aboutPage'])->name('about');
+Route::get('/', [CourseController::class, 'homePage'])->name('home');
+Route::get('/teachers', [CourseController::class, 'allTeachers'])->name('teachers');
+Route::get('/teacher-detail/{slug}', [CourseController::class, 'singleTeacher'])->name('teacher-detail');
+Route::get('/course-detail/{slug}', [CourseController::class, 'singleCourse'])->name('course-detail');
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|-------------------------------------------------  -------------------------
+*/
+
+Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
+
+    Route::get('/dashboard', [adminController::class, 'dashboard'])->name('admin.dashboard');
+
+    // Courses
+    Route::get('/courses', [adminController::class, 'courseIndex'])->name('admin.courses.index');
+    Route::get('/courses/create', [adminController::class, 'courseCreate'])->name('admin.courses.create');
+    Route::post('/courses', [adminController::class, 'courseStore'])->name('admin.courses.store');
+    Route::get('/courses/show', [adminController::class, 'courseShow'])->name('admin.courses.show');
+    Route::get('/courses/index', [adminController::class, 'courseEdit'])->name('admin.courses.edit');
+
+    // Students
+    Route::get('/students', [adminController::class, 'studentIndex'])->name('admin.students.index');
+   
+    Route::post('/students', [adminController::class, 'studentStore'])->name('admin.students.store');
+    Route::get('/students/show', [adminController::class, 'studentShow'])->name('admin.students.show');
+    Route::get('/students/index', [adminController::class, 'studentEdit'])->name('admin.students.index');
+    Route::get('/studentdashboard',[adminController::class,'dashboardstudent'])->name('dash.student');
+
+    // Teachers
+    Route::get('/teachers', [adminController::class, 'teacherIndex'])->name('admin.teachers.index');
+    Route::get('/teachers/create', [adminController::class, 'teacherCreate'])->name('admin.teachers.create');
+    Route::post('/teachers', [adminController::class, 'teacherStore'])->name('admin.teachers.store');
+    Route::get('/teachers/show', [adminController::class, 'teacherShow'])->name('admin.teachers.show');
+    Route::get('/teachers/index', [adminController::class, 'teacherEdit'])->name('admin.teachers.index');
 });
-Route::get("/teacher", function () {
-    return "Teacher Page";
-})->name("teacher.dashboard");
 
-Route::get("/student", function () {
-    return "Student Page";
-})->name("student.dashboard");
-Route::get('/admin', function () {
-    return "Admin Page";
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
+
+// Public dashboard route
+
+Route::get('/studentdashboard', [adminController::class, 'dashboardstudent'])
+    ->middleware(['auth','verified'])
+    ->name('student.dashboard');
+    Route::get('/studentdashboard', [adminController::class, 'dashboardstudent'])
+    ->middleware(['auth','verified'])
+    ->name('student.dashboard');
+    Route::get('/teacherdashboard', [adminController::class, 'dashboardteacher'])
+    ->middleware(['auth','verified'])
+    ->name('teacher.dashboard');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
-
-
-/**
-* Sheraz will create all the layouts for three user types
-* Talha will redesign the auth pages (login and register)
-* Zain will seed 10 courses with factories and seeder , must exist in db
-* Abdullah will creat the index and show pages for courses
-* Hassan will create course pages (index , show and create) in the admin panel
-* Imran will create the index and show pages for user panel
-
-
-*/
+require __DIR__.'/auth.php';
