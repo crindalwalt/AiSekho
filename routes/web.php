@@ -62,7 +62,7 @@ Route::get('/student/dashboard', [adminController::class, 'dashboardstudent'])
     Route::get('/studentdashboard', [adminController::class, 'dashboardstudent'])
     ->middleware(['auth','verified'])
     ->name('student.dashboard');
-    Route::get('/teacherdashboard', [adminController::class, 'dashboardteacher'])
+    Route::get('/teacher/dashboard', [adminController::class, 'dashboardteacher'])
     ->middleware(['auth','verified'])
     ->name('teacher.dashboard');
 
