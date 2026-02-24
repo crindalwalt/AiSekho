@@ -3,13 +3,13 @@
         
         <div class="lg:col-span-2">
             <nav class="text-sm text-gray-500 mb-6">
-                Courses / AI & ML / <span class="text-white">Mastering ChatGPT</span>
+                Courses / AI & ML / <span class="text-white">{{ $singleCourse->title }}</span>
             </nav>
             
-            <h1 class="text-4xl md:text-5xl font-bold leading-tight">Mastering ChatGPT: <br><span class="lime-accent">Prompt Engineering 2026</span></h1>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight">{{ $singleCourse->name }}: <br><span class="lime-accent">{{ $singleCourse->subtitle }}</span></h1>
             
             <p class="text-gray-400 mt-6 text-lg">
-                Unlock the full potential of Generative AI. This course takes you from a beginner to an expert in crafting prompts that deliver high-quality results for coding, writing, and business automation.
+                {{ $singleCourse->description }}
             </p>
 
             <div class="mt-10 relative group cursor-pointer">
@@ -28,7 +28,7 @@
                 <h2 class="text-2xl font-bold mb-6">Course Syllabus</h2>
                 <div class="space-y-4">
                     <div class="bg-[#1A1A1A] p-5 rounded-2xl border border-gray-800 flex justify-between items-center">
-                        <span class="font-medium text-gray-200">1. Introduction to LLMs</span>
+                        <span class="font-medium text-gray-200">1. Introduction to {{ $singleCourse->name }}</span>
                         <span class="text-xs text-lime-accent font-bold uppercase tracking-wider">Preview</span>
                     </div>
                     <div class="bg-[#1A1A1A] p-5 rounded-2xl border border-gray-800 flex justify-between items-center opacity-60">
@@ -46,14 +46,14 @@
         <div class="space-y-8">
             <div class="bg-[#1A1A1A] p-8 rounded-[2rem] border border-gray-800 sticky top-10">
                 <div class="flex items-end space-x-3 mb-6">
-                    <span class="text-4xl font-bold">$49.99</span>
-                    <span class="text-gray-500 line-through text-lg mb-1">$99.00</span>
+                    <span class="text-4xl font-bold">${{ $singleCourse->price }}</span>
+                    <span class="text-gray-500 line-through text-lg mb-1">${{ $singleCourse->discount_price }}</span>
                 </div>
                 
                 <ul class="space-y-4 text-sm text-gray-300 mb-8">
                     <li class="flex items-center space-x-3">
                         <svg class="w-5 h-5 text-lime-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        <span>Lifetime access to 24 lessons</span>
+                        <span>Lifetime access to {{ $singleCourse->lessons_count }} lessons</span>
                     </li>
                     <li class="flex items-center space-x-3">
                         <svg class="w-5 h-5 text-lime-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -61,16 +61,18 @@
                     </li>
                     <li class="flex items-center space-x-3">
                         <svg class="w-5 h-5 text-lime-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        <span>6 Free Downloadable Guides</span>
+                        <span>{{ $singleCourse->downloadable_guides_count }} Free Downloadable Guides</span>
                     </li>
                 </ul>
 
                 <button class="w-full bg-lime-accent text-black font-bold py-4 rounded-2xl hover:bg-lime-400 transition mb-4">
                     Enroll Now
                 </button>
-                <button class="w-full bg-transparent border border-gray-700 text-white font-bold py-4 rounded-2xl hover:bg-gray-800 transition">
+                <a href="{{route('add-to-cart', $singleCourse->slug)}}">
+                    <button class="w-full bg-transparent border border-gray-700 text-white font-bold py-4 rounded-2xl hover:bg-gray-800 transition">
                     Add to Cart
                 </button>
+                </a>
             </div>
 
             <div class="bg-[#1A1A1A] p-6 rounded-[2rem] border border-gray-800">
@@ -78,8 +80,8 @@
                 <div class="flex items-center space-x-4">
                     <div class="w-14 h-14 bg-gray-700 rounded-full border border-lime-accent"></div>
                     <div>
-                        <div class="font-bold">Dr. Arsalan Khan</div>
-                        <div class="text-xs text-gray-500">AI Researcher & Expert</div>
+                        <div class="font-bold">{{ $singleCourse->teacher->name }}</div>
+                        <div class="text-xs text-gray-500">{{ $singleCourse->teacher->designation }}</div>
                     </div>
                 </div>
             </div>

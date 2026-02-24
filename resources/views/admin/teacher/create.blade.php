@@ -23,6 +23,9 @@
                         <label class="block text-sm font-bold text-gray-300 mb-3">Full Name</label>
                         <input type="text" name="name" placeholder="e.g., Dr. Ahmed Hassan" 
                             class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                            @error("name")
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
+                            @enderror
                     </div>
 
                     <!-- Email -->
@@ -30,6 +33,9 @@
                         <label class="block text-sm font-bold text-gray-300 mb-3">Email Address</label>
                         <input type="email" name="email" placeholder="teacher@example.com" 
                             class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                            @error("email")
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>     
+                            @enderror
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
@@ -38,6 +44,9 @@
                             <label class="block text-sm font-bold text-gray-300 mb-3">Phone Number</label>
                             <input type="tel" name="phone" placeholder="+92 300 1234567" 
                                 class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                @error("phone")
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                         </div>
 
                         <!-- Qualification -->
@@ -51,6 +60,9 @@
                                 <option value="phd">PhD</option>
                                 <option value="certificate">Professional Certificate</option>
                             </select>
+                            @error("qualification")
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
+                            @enderror
                         </div>
                     </div>
 
@@ -59,6 +71,9 @@
                         <label class="block text-sm font-bold text-gray-300 mb-3">Specialty/Expertise</label>
                         <input type="text" name="specialty" placeholder="e.g., AI & Machine Learning" 
                             class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                            @error("specialty")
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
+                            @enderror
                     </div>
 
                     <!-- Bio -->
@@ -66,6 +81,9 @@
                         <label class="block text-sm font-bold text-gray-300 mb-3">Biography</label>
                         <textarea name="bio" rows="4" placeholder="Write a brief biography for the teacher..." 
                             class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition resize-none"></textarea>
+                            @error("bio")
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
+                            @enderror
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
@@ -74,6 +92,9 @@
                             <label class="block text-sm font-bold text-gray-300 mb-3">Years of Experience</label>
                             <input type="number" name="experience_years" placeholder="10" min="0" 
                                 class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                       @error("experience_years")
+                                       <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                       @enderror
                         </div>
 
                         <!-- Hourly Rate -->
@@ -81,6 +102,9 @@
                             <label class="block text-sm font-bold text-gray-300 mb-3">Hourly Rate ($)</label>
                             <input type="number" name="hourly_rate" placeholder="50" step="0.01" 
                                 class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                        @error("hourly_rate")
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                         </div>
                     </div>
 
@@ -102,8 +126,14 @@
                         <div class="flex gap-4">
                             <label class="flex items-center">
                                 <input type="radio" name="status" value="active" checked class="mr-2">
+                               
+                                    
+                                
                                 <span class="text-sm text-gray-300">Active</span>
                             </label>
+                             @error("status")
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                 @enderror
                             <label class="flex items-center">
                                 <input type="radio" name="status" value="inactive" class="mr-2">
                                 <span class="text-sm text-gray-300">Inactive</span>

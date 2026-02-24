@@ -19,8 +19,11 @@ return new class extends Migration
             $table->string("description");
             $table->string("slug")->unique();
             $table->string("thumbnail");
+            $table->string("category");
+            $table->integer("duration")->nullable();
             $table->string("video_url")->nullable();
             $table->enum("level" , ["beginner", "intermediate", "advanced"]);
+
 
 
             // course details

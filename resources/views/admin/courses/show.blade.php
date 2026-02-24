@@ -6,8 +6,8 @@
                 <a href="{{ route('admin.courses.index') }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium flex items-center gap-2 mb-4">
                     ← Back to Courses
                 </a>
-                <h1 class="text-4xl font-bold">Mastering ChatGPT</h1>
-                <p class="text-gray-400 mt-2">AI & Machine Learning</p>
+                <h1 class="text-4xl font-bold">AI & Machine Learning</h1>
+                <p class="text-gray-400 mt-2">Mastering ChatGPT and AI Tools</p>
             </div>
             <div class="flex gap-3">
                 <a href="{{ route('admin.courses.index') }}" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition">

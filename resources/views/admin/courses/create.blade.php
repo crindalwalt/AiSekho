@@ -17,17 +17,23 @@
             </div>
 
             <div class="p-8">
-                <form action="{{ route('admin.courses.store') }}" method="POST" class="space-y-6">
+                <form action="{{ route('admin.courses.store') }}" enctype="multipart/form-data" method="POST" class="space-y-6">
                     @csrf
 
                     <!-- Course Title -->
                     <div>
                         <label class="block text-sm font-bold text-gray-300 mb-3">Course Title</label>
-                        <input type="text" name="title"
-                               value="{{ old('title') }}"
+                        <input type="text" name="name"
+                               value="{{ old('name') }}"
                                placeholder="e.g., Mastering Advanced JavaScript"
                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                               @error("name")
+                               <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                   
+                               @enderror
                     </div>
+                     
+                
 
                     <!-- Course Description -->
                     <div>
@@ -35,6 +41,9 @@
                         <textarea name="description" rows="4"
                                   placeholder="Write a compelling description for your course..."
                                   class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition resize-none">{{ old('description') }}</textarea>
+                                  @error("description")
+                                  <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                  @enderror
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
@@ -47,6 +56,9 @@
                                        value="{{ old('price') }}"
                                        placeholder="99.99" step="0.01"
                                        class="flex-1 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                       @error("price")
+                                       <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                       @enderror
                             </div>
                         </div>
 
@@ -57,25 +69,22 @@
                                    value="{{ old('duration') }}"
                                    placeholder="40"
                                    class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                      @error("duration")    
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
                         <!-- Instructor -->
-                        <div>
-                            <label class="block text-sm font-bold text-gray-300 mb-3">Instructor</label>
-                            <select name="instructor_id"
-                                    class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                <option value="">Select Instructor</option>
-                                @foreach($instructors as $instructor)
-                                    <option value="{{ $instructor->id }}"
-                                        {{ old('instructor_id') == $instructor->id ? 'selected' : '' }}>
-                                        {{ $instructor->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
+                        <<!-- Course Thumbnail -->
+<div>
+    <label class="block text-sm font-bold text-gray-300 mb-3">Course Thumbnail</label>
+    <input type="file" name="thumbnail"
+           class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+  
+</div>
+                                
                         <!-- Category -->
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-3">Category</label>
@@ -87,6 +96,10 @@
                                 <option value="development" {{ old('category') == 'development' ? 'selected' : '' }}>Development</option>
                                 <option value="business" {{ old('category') == 'business' ? 'selected' : '' }}>Business</option>
                             </select>
+                            @error("category")
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                
+                            @enderror
                         </div>
                     </div>
 
