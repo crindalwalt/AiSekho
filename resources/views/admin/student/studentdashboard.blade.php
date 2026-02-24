@@ -23,7 +23,12 @@
                 <a href="#" class="block p-3 rounded-xl bg-[#1e2128] lime-accent font-medium">My Progress</a>
                 <a href="#" class="block p-3 rounded-xl hover:bg-[#1e2128] transition">Browse Teachers</a>
                 <a href="#" class="block p-3 rounded-xl hover:bg-[#1e2128] transition">Messages</a>
-                <a href="#" class="block p-3 rounded-xl text-red-400 mt-10">Logout</a>
+                <div class="p-4 border-t border-gray-800">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg text-sm font-bold hover:bg-red-700 transition">Logout</button>
+            </form>
+    </div>
             </nav>
         </aside>
 
@@ -37,7 +42,7 @@
             </header>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
+
                 <section class="glass-card p-6 shadow-xl">
                     <div class="flex items-center mb-6">
                         <div class="p-3 bg-blue-500/10 rounded-xl mr-4">
@@ -47,7 +52,7 @@
                         </div>
                         <h3 class="text-xl font-bold">Set Course Schedule</h3>
                     </div>
-                    
+
                     <form action="#" class="space-y-4">
                         <div>
                             <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2">Select Study Time</label>
