@@ -38,15 +38,11 @@ Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
     Route::get('/courses/index', [adminController::class, 'courseEdit'])->name('admin.courses.edit');
 
     // Students
-    Route::get('/students', [adminController::class, 'studentIndex'])->name('admin.students.index');
+  
 
     Route::post('/students', [adminController::class, 'studentStore'])->name('admin.students.store');
     Route::get('/students/show', [adminController::class, 'studentShow'])->name('admin.students.show');
-    Route::get('/students/index', [adminController::class, 'studentEdit'])->name('admin.students.index');
-    Route::get('/studentdashboard',[adminController::class,'dashboardstudent'])->name('dash.student');
-
-    // Teachers
-    Route::get('/teachers', [adminController::class, 'teacherIndex'])->name('admin.teachers.index');
+    Route::get('/students/index', [adminController::class, 'studentIndex'])->name('admin.students.index');
     Route::get('/teachers/create', [adminController::class, 'teacherCreate'])->name('admin.teachers.create');
     Route::post('/teachers', [adminController::class, 'teacherStore'])->name('admin.teachers.store');
     Route::get('/teachers/show', [adminController::class, 'teacherShow'])->name('admin.teachers.show');

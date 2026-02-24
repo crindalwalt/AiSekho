@@ -1,190 +1,135 @@
 <x-my-layouts.admin-layout>
-    <div class="p-10">
-        <!-- Header Section -->
-        <div class="flex justify-between items-center mb-8">
-            <div>
-                <h1 class="text-4xl font-bold">Students</h1>
-                <p class="text-gray-400 mt-2">Manage and track all students</p>
-            </div>
-            <div class="flex gap-3">
-                <input type="text" placeholder="Search students..." 
-                    class="px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition w-64">
-                <button class="bg-lime-accent text-black px-6 py-3 rounded-lg font-bold hover:bg-lime-500 transition">
-                    Import
-                </button>
-            </div>
-        </div>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Directory - AI_Sekho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lime-accent': '#d9f99d',
+                        'dark-card': '#16181d',
+                        'dark-bg': '#0f1115',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f1115; color: white; }
+        .glass-card { 
+            background: linear-gradient(145deg, #16181d 0%, #1a1c22 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: #d9f99d50;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body class="antialiased p-6 md:p-12">
 
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800">
-                <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">Total Students</p>
-                <h3 class="text-3xl font-bold mt-2">1,240</h3>
-                <p class="text-lime-accent text-xs mt-2">↑ 156 new this month</p>
-            </div>
-            <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800">
-                <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">Active Now</p>
-                <h3 class="text-3xl font-bold mt-2">348</h3>
-                <p class="text-green-500 text-xs mt-2">28% of total</p>
-            </div>
-            <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800">
-                <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">Avg. Completion</p>
-                <h3 class="text-3xl font-bold mt-2">72%</h3>
-                <p class="text-lime-accent text-xs mt-2">Good progress</p>
-            </div>
-            <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800">
-                <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">Revenue Generated</p>
-                <h3 class="text-3xl font-bold mt-2">$61,950</h3>
-                <p class="text-lime-accent text-xs mt-2">↑ 18% increase</p>
-            </div>
+    <div class="max-w-7xl mx-auto mb-12 flex justify-between items-end">
+        <div>
+            <h1 class="text-5xl font-black tracking-tighter italic">Student <span class="text-lime-accent">Directory</span></h1>
+            <p class="text-gray-500 mt-2 font-medium uppercase tracking-[0.2em] text-xs underline decoration-lime-accent decoration-2 underline-offset-8">Managing Infrastructure</p>
         </div>
-
-        <!-- Students Table -->
-        <div class="bg-[#1A1A1A] rounded-[2.5rem] border border-gray-800 overflow-hidden">
-            <div class="p-8 border-b border-gray-800">
-                <h3 class="text-xl font-bold">All Students</h3>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="text-gray-500 text-sm uppercase">
-                            <th class="px-8 py-5 font-medium">Student</th>
-                            <th class="px-8 py-5 font-medium">Email</th>
-                            <th class="px-8 py-5 font-medium">Courses Enrolled</th>
-                            <th class="px-8 py-5 font-medium">Completion Rate</th>
-                            <th class="px-8 py-5 font-medium">Join Date</th>
-                            <th class="px-8 py-5 font-medium">Status</th>
-                            <th class="px-8 py-5 font-medium">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-800">
-                        <tr class="hover:bg-white/5 transition">
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-lime-accent to-lime-600 flex items-center justify-center text-black font-bold">A</div>
-                                    <div>
-                                        <p class="text-sm font-medium">Ali Ahmed</p>
-                                        <p class="text-xs text-gray-400">ID: STU001</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">ali.ahmed@email.com</td>
-                            <td class="px-8 py-5 text-sm font-bold">5</td>
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                        <div class="h-full bg-lime-accent w-3/4"></div>
-                                    </div>
-                                    <span class="text-xs font-bold">75%</span>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-400">Jan 15, 2025</td>
-                            <td class="px-8 py-5">
-                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">Active</span>
-                            </td>
-                            <td class="px-8 py-5">
-                                <div class="flex gap-2">
-                                    <a href="{{ route('admin.students.show', 1) }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <button class="text-red-400 hover:text-red-300 text-sm font-medium">Block</button>
-                                </div>
-                            </td>''
-                        </tr>
-                        <tr class="hover:bg-white/5 transition">
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-black font-bold">S</div>
-                                    <div>
-                                        <p class="text-sm font-medium">Sara Malik</p>
-                                        <p class="text-xs text-gray-400">ID: STU002</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">sara.malik@email.com</td>
-                            <td class="px-8 py-5 text-sm font-bold">8</td>
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                        <div class="h-full bg-lime-accent w-5/6"></div>
-                                    </div>
-                                    <span class="text-xs font-bold">92%</span>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-400">Dec 20, 2024</td>
-                            <td class="px-8 py-5">
-                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">Active</span>
-                            </td>
-                            <td class="px-8 py-5">
-                                <div class="flex gap-2">
-                                    <a href="{{ route('admin.students.show', 2) }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <button class="text-gray-400 hover:text-gray-300 text-sm font-medium">•••</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition">
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-black font-bold">U</div>
-                                    <div>
-                                        <p class="text-sm font-medium">Usman Khan</p>
-                                        <p class="text-xs text-gray-400">ID: STU003</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">usman.khan@email.com</td>
-                            <td class="px-8 py-5 text-sm font-bold">3</td>
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                        <div class="h-full bg-lime-accent w-1/3"></div>
-                                    </div>
-                                    <span class="text-xs font-bold">38%</span>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-400">Feb 01, 2025</td>
-                            <td class="px-8 py-5">
-                                <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">Active</span>
-                            </td>
-                            <td class="px-8 py-5">
-                                <div class="flex gap-2">
-                                    <a href="{{ route('admin.students.show', 3) }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <button class="text-gray-400 hover:text-gray-300 text-sm font-medium">•••</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition">
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-black font-bold">F</div>
-                                    <div>
-                                        <p class="text-sm font-medium">Fatima Zahra</p>
-                                        <p class="text-xs text-gray-400">ID: STU004</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">fatima.zahra@email.com</td>
-                            <td class="px-8 py-5 text-sm font-bold">6</td>
-                            <td class="px-8 py-5">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
-                                        <div class="h-full bg-lime-accent w-2/3"></div>
-                                    </div>
-                                    <span class="text-xs font-bold">68%</span>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-400">Jan 08, 2025</td>
-                            <td class="px-8 py-5">
-                                <span class="px-3 py-1 bg-red-500/10 text-red-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">Inactive</span>
-                            </td>
-                            <td class="px-8 py-5">
-                                <div class="flex gap-2">
-                                    <a href="{{ route('admin.students.show', 4) }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <button class="text-gray-400 hover:text-gray-300 text-sm font-medium">•••</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="text-right hidden md:block">
+           
+            <p class="text-[10px] text-gray-600 font-black uppercase tracking-widest">Total Active</p>
         </div>
     </div>
+
+    @if (session('success'))
+        <div id="success-alert" class="max-w-7xl mx-auto mb-10 flex items-center p-4 bg-lime-accent/5 border border-lime-accent/20 rounded-3xl animate-in fade-in duration-500">
+            <div class="w-10 h-10 bg-lime-accent rounded-2xl flex items-center justify-center shadow-lg shadow-lime-accent/20">
+                <svg class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <p class="ml-4 text-sm font-bold italic">{{ session('success') }}</p>
+            <button onclick="document.getElementById('success-alert').style.display='none'" class="ml-auto text-gray-500 hover:text-white">✕</button>
+        </div>
+    @endif
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        @foreach($students as $student)
+        <div class="glass-card p-8 rounded-[2.5rem] relative overflow-hidden group">
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-lime-accent/5 rounded-full blur-3xl group-hover:bg-lime-accent/10 transition-all"></div>
+
+            <div class="flex items-start justify-between mb-8">
+                <div class="relative">
+                    @if($student->image_url)
+                        <img src="{{ asset('storage/students_images/' . $student->image_url) }}" class="w-20 h-20 rounded-[2rem] object-cover ring-4 ring-black shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                    @else
+                        <div class="w-20 h-20 rounded-[2rem] bg-gray-800 flex items-center justify-center text-lime-accent text-3xl font-black italic shadow-2xl">
+                            {{ strtoupper(substr($student->name, 0, 1)) }}
+                        </div>
+                    @endif
+                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-lime-accent border-4 border-[#0f1115] rounded-full flex items-center justify-center">
+                        <span class="w-2 h-2 bg-black rounded-full animate-pulse"></span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] font-black text-gray-600 uppercase tracking-widest block">ID Number</span>
+                    <p class="text-sm font-bold text-white italic">#STU-{{ str_pad($student->id, 3, '0', STR_PAD_LEFT) }}</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <h3 class="text-2xl font-black text-white group-hover:text-lime-accent transition-colors tracking-tight italic">{{ $student->name }}</h3>
+                    <p class="text-gray-400 text-sm font-medium">{{ $student->email }}</p>
+                </div>
+
+                <div class="flex items-center gap-2 pt-2">
+                    <div class="px-3 py-1 bg-white/5 rounded-lg border border-white/10 text-[10px] font-bold text-gray-400">
+                        {{ $student->gender }}
+                    </div>
+                    <div class="px-3 py-1 bg-white/5 rounded-lg border border-white/10 text-[10px] font-bold text-gray-400">
+                        Age: {{ $student->age }}
+                    </div>
+                </div>
+
+                <div class="bg-black/20 rounded-2xl p-4 border border-white/[0.03]">
+                    <span class="text-[9px] font-black text-gray-600 uppercase tracking-widest block mb-1">Enrolled Course</span>
+                    <p class="text-sm font-bold text-gray-200">{{ $student->course->title ?? 'Cloud Computing' }}</p>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] font-black text-gray-600 uppercase">Registered</span>
+                        <span class="text-xs font-bold text-gray-400">{{ $student->created_at->format('d M, Y') }}</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="p-3 bg-white/5 hover:bg-lime-accent hover:text-black rounded-2xl transition-all duration-300 group/btn">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </button>
+                        <button class="p-3 bg-white/5 hover:bg-red-500 hover:text-white rounded-2xl transition-all duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+    </div>
+
+    @if(count($students) == 0)
+        <div class="text-center py-24">
+            <p class="text-gray-700 font-black uppercase tracking-[0.5em] italic">No Student Records Found</p>
+        </div>
+    @endif
+
+</body>
+</html>
 </x-my-layouts.admin-layout>
