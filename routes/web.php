@@ -51,9 +51,11 @@ Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
 });
 
 
-// Public dashboard route
-
-// Student and Teacher Dashboard Routes
+/*
+|--------------------------------------------------------------------------
+| Student and Teacher Dashboard Routes
+|-------------------------------------------------  -------------------------
+*/
 
 
 Route::get('/student/dashboard', [adminController::class, 'dashboardstudent'])

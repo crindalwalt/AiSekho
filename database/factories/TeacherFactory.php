@@ -13,6 +13,10 @@ class TeacherFactory extends Factory
 
         return [
             'name' => $name,
+            "email" => $this->faker->unique()->safeEmail(),
+            'phone_number' => $this->faker->optional()->numerify('##########'),
+            'password' => bcrypt('password'), // Default password for testing
+            "gender" => $this->faker->randomElement(['male', 'female', 'other']),
             'slug' => Str::slug($name) . '-' . fake()->unique()->numberBetween(100,999),
 
             'title' => $this->faker->randomElement([

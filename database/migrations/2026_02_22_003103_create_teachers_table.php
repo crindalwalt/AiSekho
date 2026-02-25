@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
                 $table->string('name');
+                $table->string('email')->unique();
+                $table->integer('phone_number')->nullable();
+                $table->string('password');
+                $table->enum('gender', ['male', 'female', 'other'])->nullable();
+
             $table->string('slug')->unique();
 
             $table->string('title')->nullable(); // Senior AI Research Scientist
@@ -30,6 +35,7 @@ return new class extends Migration
             $table->decimal('rating', 3, 2)->default(0);
             $table->integer('reviews_count')->default(0);
             $table->timestamps();
+
         });
     }
 
