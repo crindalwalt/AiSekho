@@ -1,10 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Str; 
+=======
+>>>>>>> 837083a95f52d3910412d109c4fc742640e94c7d
 use App\Models\Course;
-use App\Models\Teacher;
+use App\Models\Student;
+use App\Models\Teacher; 
+use App\Models\Studenta;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
@@ -87,8 +97,8 @@ Course::create([
 
 
     // Students
-    public function studentIndex(){
-        return view('admin.student.index');
+    public function studentIndex(){$students = Studenta::all();
+        return view('admin.student.index', compact('students'));
     }
 
     public function studentShow(){
@@ -107,8 +117,17 @@ Course::create([
     public function teacherShow(){
         return view('admin.teacher.show');
     }
+<<<<<<< HEAD
   
   
+=======
+      public function dashboardstudent(){$courses = Course::all();
+        return view('admin.student.studentdashboard', compact('courses'));
+    }
+     public function dashboardteacher(){
+        return view('admin.teacher.teacherdashboard');
+    } 
+>>>>>>> 837083a95f52d3910412d109c4fc742640e94c7d
 
 
 /// Teacher Store Method
@@ -116,12 +135,57 @@ Course::create([
     public function teacherAdminStore(Request $request)
     {
         $validatedData = $request->validate([
+<<<<<<< HEAD
            
+=======
+            'name' => 'required|string|max:255',
+            
+            'email' => 'required|email|unique:teachers,email',
+            'specialty' => 'required|string|max:255',
+>>>>>>> 837083a95f52d3910412d109c4fc742640e94c7d
         ]);
 
         Teacher::create($validatedData);
 
         return redirect()->route('admin.teachers.index')
             ->with('success', 'Teacher created successfully!');
+    }
+    public function studentstore(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'age' => 'required|integer|min:1',
+            'gender' => 'required|string|max:10',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'course_id' => 'required|exists:courses,id',
+            
+            'email' => 'required|email|unique:students,email',
+            'course_id' => 'required|exists:courses,id',
+        ]);
+        if ($request->hasFile('image_url')) {
+    // 1. Pehle file ka object lein
+    $file = $request->file('image_url');
+    
+    // 2. Filename banayein (Extension object se lein)
+    $imagekanam = 'img' . time() . '.' . $file->getClientOriginalExtension();
+    
+    // 3. Ab file ko store karein
+    $file->storeAs('public/students_images', $imagekanam);
+}
+        Studenta::create([
+            'name'      => $request->name,
+    'age'       => $request->age,
+    'gender'    => $request->gender,
+    'address'   => $request->address,
+    'phone'     => $request->phone,
+    'course_id' => $request->course_id,
+    'email'     => $request->email,
+    'image_url' => $imagekanam ?? null,
+
+        ]);
+        
+        return redirect()->route('admin.student.index')
+            ->with('success', 'Student created successfully!');
     }
 }

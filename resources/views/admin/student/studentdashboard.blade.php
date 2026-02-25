@@ -3,123 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard - AI_Sekho</title>
+    <title>Add New Student - AI_Sekho</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f1115; color: white; }
-        .glass-card { background: #16181d; border: 1px solid #1e2128; border-radius: 24px; }
+        .glass-card { background: #16181d; border: 1px solid #1e2128; border-radius: 32px; }
         .lime-accent { color: #d9f99d; }
-        .btn-lime { background-color: #d9f99d; color: #000; font-weight: 700; border-radius: 12px; transition: all 0.3s; }
-        .btn-lime:hover { background-color: #bef264; transform: translateY(-2px); }
+        input, select, textarea { 
+            background-color: #1e2128 !important; 
+            border: 1px solid #2d3139 !important; 
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #d9f99d !important;
+            box-shadow: 0 0 0 4px rgba(217, 249, 157, 0.1) !important;
+            outline: none;
+        }
     </style>
 </head>
-<body>
+<body class="antialiased p-6 md:p-12">
 
-    <div class="flex min-h-screen">
-        <aside class="w-64 border-r border-gray-800 p-6 hidden md:block">
-            <h2 class="text-2xl font-bold mb-10 text-white tracking-tighter">AI<span class="lime-accent">_Sekho</span></h2>
-            <nav class="space-y-4">
-                <a href="#" class="block p-3 rounded-xl bg-[#1e2128] lime-accent font-medium">My Progress</a>
-                <a href="#" class="block p-3 rounded-xl hover:bg-[#1e2128] transition">Browse Teachers</a>
-                <a href="#" class="block p-3 rounded-xl hover:bg-[#1e2128] transition">Messages</a>
-                <a href="#" class="block p-3 rounded-xl text-red-400 mt-10">Logout</a>
-            </nav>
-        </aside>
-
-        <main class="flex-1 p-8">
-            <header class="flex justify-between items-center mb-10">
-                <div>
-                    <h1 class="text-3xl font-bold">Student <span class="lime-accent">Dashboard</span></h1>
-                    <p class="text-gray-400">Welcome back, Imran! Ready to learn?</p>
-                </div>
-                <img src="https://ui-avatars.com/api/?name=Imran&background=d9f99d&color=000" class="w-12 h-12 rounded-full border-2 border-[#d9f99d]" />
-            </header>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <section class="glass-card p-6 shadow-xl">
-                    <div class="flex items-center mb-6">
-                        <div class="p-3 bg-blue-500/10 rounded-xl mr-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold">Set Course Schedule</h3>
-                    </div>
-                    
-                    <form action="#" class="space-y-4">
-                        <div>
-                            <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2">Select Study Time</label>
-                            <input type="time" class="w-full bg-[#1e2128] border-gray-700 text-white rounded-xl p-4 focus:ring-2 focus:ring-[#d9f99d] outline-none">
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2">Duration (Hours)</label>
-                                <select class="w-full bg-[#1e2128] border-gray-700 text-white rounded-xl p-4 outline-none">
-                                    <option>1 Hour</option>
-                                    <option>2 Hours</option>
-                                    <option>3 Hours</option>
-                                </select>
-                            </div>
-                            <div class="flex items-end">
-                                <button type="button" class="btn-lime w-full py-4 shadow-lg shadow-[#d9f99d]/10">Save Schedule</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-
-                <section class="glass-card p-6 shadow-xl">
-                    <div class="flex items-center mb-6">
-                        <div class="p-3 bg-[#d9f99d]/10 rounded-xl mr-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 lime-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold">Pick Your Course</h3>
-                    </div>
-
-                    <div class="space-y-4 max-h-[250px] overflow-y-auto pr-2 custom-scrollbar">
-                        <div class="flex items-center justify-between p-4 bg-[#1e2128] rounded-2xl hover:border-[#d9f99d] border border-transparent transition cursor-pointer">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center mr-4">
-                                    <span class="text-orange-500 font-bold">P</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold">PHP 8.5 Mastery</h4>
-                                    <p class="text-xs text-gray-500">Laravel 13 included</p>
-                                </div>
-                            </div>
-                            <input type="checkbox" class="w-6 h-6 accent-[#d9f99d]">
-                        </div>
-
-                        <div class="flex items-center justify-between p-4 bg-[#1e2128] rounded-2xl border border-transparent hover:border-[#d9f99d] transition cursor-pointer">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
-                                    <span class="text-blue-500 font-bold">A</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold">AI & Machine Learning</h4>
-                                    <p class="text-xs text-gray-500">Python & PyTorch</p>
-                                </div>
-                            </div>
-                            <input type="checkbox" class="w-6 h-6 accent-[#d9f99d]">
-                        </div>
-                    </div>
-
-                    <button class="w-full mt-6 py-3 border border-[#d9f99d] text-[#d9f99d] font-bold rounded-xl hover:bg-[#d9f99d] hover:text-black transition">Enroll in Selected</button>
-                </section>
-
+    <div class="max-w-3xl mx-auto">
+        <div class="mb-10 flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-extrabold italic tracking-tighter">Register <span class="lime-accent">Student</span></h1>
+                <p class="text-gray-500 mt-2 uppercase tracking-widest text-[10px] font-bold">Administration / New Entry</p>
             </div>
+            <a href="{{ route('admin.students.index') }}" class="text-gray-400 hover:text-white transition text-sm">← Back to List</a>
+        </div>
 
-            <div class="mt-12 glass-card p-8 bg-gradient-to-r from-[#16181d] to-[#1e2128] flex items-center justify-between">
-                <div>
-                    <h2 class="text-2xl font-bold mb-2">Ready to Master <span class="lime-accent">PHP 8.5?</span></h2>
-                    <p class="text-gray-400">Get exclusive access to our newest Laravel 13 masterclass.</p>
+        <div class="glass-card p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-lime-accent/5 rounded-full blur-3xl"></div>
+
+            <form action="{{ route('admin.students.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                @csrf
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
+                        <input type="text" name="name" required placeholder="Ali Ahmed" 
+                            class="w-full rounded-2xl p-4 text-sm">
+                        @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
+                        <input type="email" name="email" required placeholder="ali@example.com" 
+                            class="w-full rounded-2xl p-4 text-sm">
+                        @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                    </div>
                 </div>
-                <button class="btn-lime px-8 py-4 shadow-xl shadow-[#d9f99d]/10">Buy Course Now — $49</button>
-            </div>
-        </main>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Age</label>
+                        <input type="number" name="age" required placeholder="22" 
+                            class="w-full rounded-2xl p-4 text-sm">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Gender</label>
+                        <select name="gender" class="w-full rounded-2xl p-4 text-sm appearance-none cursor-pointer">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Assign Course</label>
+                        <select name="course_id" required class="w-full rounded-2xl p-4 text-sm appearance-none cursor-pointer">
+                            @foreach($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Phone Number</label>
+                    <input type="text" name="phone" required placeholder="+92 300 1234567" 
+                        class="w-full rounded-2xl p-4 text-sm">
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Home Address</label>
+                    <textarea name="address" rows="2" placeholder="Street, City, Country" 
+                        class="w-full rounded-2xl p-4 text-sm resize-none"></textarea>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest ml-1">Student Profile Image</label>
+                    <div class="relative group">
+                        <input type="file" name="image_url" 
+                            class="w-full text-xs text-gray-400 file:mr-4 file:py-3 file:px-6 file:rounded-2xl file:border-0 file:text-[10px] file:font-black file:uppercase file:bg-white/5 file:text-white hover:file:bg-white/10 file:cursor-pointer cursor-pointer bg-[#1e2128] rounded-2xl p-2 border border-dashed border-gray-700">
+                    </div>
+                    <p class="text-[9px] text-gray-600 italic">Recommended: Square image, Max 2MB (JPG, PNG)</p>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-[#d9f99d] hover:bg-[#bef264] text-black font-black py-5 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] shadow-xl shadow-[#d9f99d]/10 uppercase tracking-[0.2em] text-xs">
+                        Finalize Registration
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <p class="mt-8 text-center text-gray-700 text-[9px] font-black uppercase tracking-[0.5em] italic">AI_Sekho Security Protocol Active</p>
     </div>
 
 </body>

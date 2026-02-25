@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
 use App\Models\Teacher;
 use App\Models\Course;
+=======
+
+>>>>>>> 837083a95f52d3910412d109c4fc742640e94c7d
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+<<<<<<< HEAD
        public function dashboardteacher(){
         return view('admin.teacher.teacherdashboard');
     } 
@@ -34,4 +39,7 @@ Course::create($courseData);
     public function dashboardstudent(){
         return view('admin.student.studentdashboard');
     }
+=======
+    //
+>>>>>>> 837083a95f52d3910412d109c4fc742640e94c7d
 }
