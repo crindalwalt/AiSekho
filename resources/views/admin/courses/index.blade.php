@@ -37,10 +37,15 @@
 
         <!-- Courses Table -->
         <div class="bg-[#1A1A1A] rounded-[2.5rem] border border-gray-800 overflow-hidden">
-            <a href="{{ route('admin.courses.show') }}" class="p-8 border-b border-gray-800">
+            <a href="#" class="p-8 border-b border-gray-800">
                 <h3 class="text-xl font-bold">All Courses</h3>
             </a>
             <div class="overflow-x-auto">
+                @if(session('success'))
+    <div class="bg-green-500/10 border border-green-500 text-green-400 px-6 py-4 rounded-xl mb-6">
+        {{ session('success') }}
+    </div>
+@endif
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="text-gray-500 text-sm uppercase">
@@ -59,10 +64,10 @@
                             <td class="px-8 py-5">
                                 <div>
                                     <p class="text-sm font-medium">{{ $item->title }}</p>
-                                    <p class="text-xs text-gray-400 mt-1">{{ $item->category }}</p>
+                                    <p class="text-xs text-gray-400 mt-1">{{ $item->name }}</p>
                                 </div>
                             </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">{{ $item->name }}</td>
+                            <td class="px-8 py-5 text-sm text-gray-300">{{ $item->category }}</td>
                             <td class="px-8 py-5 text-sm font-bold">{{ $item->students_count }}</td>
                             <td class="px-8 py-5 text-sm font-bold">${{ $item->price }}</td>
                             <td class="px-8 py-5">
@@ -70,8 +75,8 @@
                             </td>
                             <td class="px-8 py-5">
                                 <div class="flex gap-2">
-                                    <a href="{{ route('admin.courses.show') }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <a href="{{ route('admin.courses.index') }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Edit</a>
+                                    <a href="{{ route('admin.courses.show',$item->slug) }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
+                                    <a href="{{ route('admin.courses.edit',$item->slug) }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Edit</a>
                                     <button class="text-red-400 hover:text-red-300 text-sm font-medium">Delete</button>
                                 </div>
                             </td>
@@ -79,48 +84,7 @@
                        @endforeach
                            
                        @endif
-                        <!-- <tr class="hover:bg-white/5 transition">
-                            <td class="px-8 py-5">
-                                <div>
-                                    <p class="text-sm font-medium">AI-Driven UI Design</p>
-                                    <p class="text-xs text-gray-400 mt-1">Design</p>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">Sara Malik</td>
-                            <td class="px-8 py-5 text-sm font-bold">289</td>
-                            <td class="px-8 py-5 text-sm font-bold">$39.99</td>
-                            <td class="px-8 py-5">
-                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">Active</span>
-                            </td>
-                            <td class="px-8 py-5">
-                                <div class="flex gap-2">
-                                    <a href="{{ route('admin.courses.show') }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <a href="{{ route('admin.courses.index') }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Edit</a>
-                                    <button class="text-red-400 hover:text-red-300 text-sm font-medium">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition">
-                            <td class="px-8 py-5">
-                                <div>
-                                    <p class="text-sm font-medium">Web Development Masterclass</p>
-                                    <p class="text-xs text-gray-400 mt-1">Development</p>
-                                </div>
-                            </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">Usman Khan</td>
-                            <td class="px-8 py-5 text-sm font-bold">156</td>
-                            <td class="px-8 py-5 text-sm font-bold">$59.99</td>
-                            <td class="px-8 py-5">
-                                <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-[10px] font-bold uppercase tracking-tighter">Pending</span>
-                            </td>
-                            <td class="px-8 py-5">
-                                <div class="flex gap-2">
-                                    <a href="{{ route('admin.courses.show') }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <a href="{{ route('admin.courses.index') }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Edit</a>
-                                    <button class="text-red-400 hover:text-red-300 text-sm font-medium">Delete</button>
-                                </div>
-                            </td>
-                        </tr> -->
+                       
                     </tbody>
                 </table>
             </div>

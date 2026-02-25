@@ -6,11 +6,11 @@
                 <a href="{{ route('admin.courses.index') }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium flex items-center gap-2 mb-4">
                     ← Back to Courses
                 </a>
-                <h1 class="text-4xl font-bold">AI & Machine Learning</h1>
-                <p class="text-gray-400 mt-2">Mastering ChatGPT and AI Tools</p>
+                <h1 class="text-4xl font-bold">{{ $course->name }}</h1>
+                <p class="text-gray-400 mt-2">{{ $course->category }}</p>
             </div>
             <div class="flex gap-3">
-                <a href="{{ route('admin.courses.index') }}" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+                <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
                     Edit
                 </a>
                 <button class="bg-red-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-red-700 transition">
@@ -28,8 +28,8 @@
             </div>
             <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800">
                 <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">Avg. Rating</p>
-                <h3 class="text-3xl font-bold mt-2">4.8★</h3>
-                <p class="text-lime-accent text-xs mt-2">245 reviews</p>
+                <h3 class="text-3xl font-bold mt-2">{{ $course->rating }}★</h3>
+                <p class="text-lime-accent text-xs mt-2">458 reviews</p>
             </div>
             <div class="bg-[#1A1A1A] p-6 rounded-3xl border border-gray-800">
                 <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">Total Revenue</p>
@@ -56,25 +56,25 @@
                         <div>
                             <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Description</p>
                             <p class="text-gray-300 leading-relaxed">
-                                Learn to master ChatGPT and other AI tools to boost your productivity. This comprehensive course covers everything from basic prompting techniques to advanced usage patterns that will transform your workflow.
+                               {{ $course->description }}
                             </p>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Duration</p>
-                                <p class="text-lg font-semibold">40 hours</p>
+                                <p class="text-lg font-semibold">{{ $course->duration }} hours</p>
                             </div>
                             <div>
                                 <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Level</p>
-                                <p class="text-lg font-semibold">Intermediate</p>
+                                <p class="text-lg font-semibold">{{ $course->level }}</p>
                             </div>
                             <div>
                                 <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Price</p>
-                                <p class="text-lg font-semibold">$49.99</p>
+                                <p class="text-lg font-semibold">${{ $course->price }}</p>
                             </div>
                             <div>
                                 <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Status</p>
-                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm font-bold">Active</span>
+                                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm font-bold">{{ $course->status }}</span>
                             </div>
                         </div>
                     </div>
@@ -89,8 +89,8 @@
                         <div class="p-6 hover:bg-white/5 transition cursor-pointer">
                             <div class="flex justify-between items-center">
                                 <div>
-                                    <h4 class="font-bold">Module 1: Introduction to ChatGPT</h4>
-                                    <p class="text-sm text-gray-400 mt-1">6 lessons • 4 hours</p>
+                                    <h4 class="font-bold">Module 1: Introduction to {{ $course->name}}</h4>
+                                    <p class="text-sm text-gray-400 mt-1">{{ $course->duration }} lessons • {{ $course->duration }} hours</p>
                                 </div>
                                 <span class="text-lime-accent font-bold">→</span>
                             </div>
@@ -99,7 +99,7 @@
                             <div class="flex justify-between items-center">
                                 <div>
                                     <h4 class="font-bold">Module 2: Advanced Prompting</h4>
-                                    <p class="text-sm text-gray-400 mt-1">8 lessons • 6 hours</p>
+                                    <p class="text-sm text-gray-400 mt-1">{{ $course->duration }} lessons • {{ $course->duration }} hours</p>
                                 </div>
                                 <span class="text-lime-accent font-bold">→</span>
                             </div>
@@ -108,7 +108,7 @@
                             <div class="flex justify-between items-center">
                                 <div>
                                     <h4 class="font-bold">Module 3: Real-World Applications</h4>
-                                    <p class="text-sm text-gray-400 mt-1">10 lessons • 8 hours</p>
+                                    <p class="text-sm text-gray-400 mt-1">{{$course->lessons_count}} lessons • {{ $course->duration }} hours</p>
                                 </div>
                                 <span class="text-lime-accent font-bold">→</span>
                             </div>
@@ -117,7 +117,7 @@
                             <div class="flex justify-between items-center">
                                 <div>
                                     <h4 class="font-bold">Module 4: Best Practices & Tips</h4>
-                                    <p class="text-sm text-gray-400 mt-1">5 lessons • 3 hours</p>
+                                    <p class="text-sm text-gray-400 mt-1">{{$course->lessons_count}} lessons • {{ $course->duration }} hours</p>
                                 </div>
                                 <span class="text-lime-accent font-bold">→</span>
                             </div>
@@ -134,13 +134,15 @@
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-lime-accent to-lime-600"></div>
                         <div>
-                            <p class="font-medium">Dr. Ahmed Hassan</p>
-                            <p class="text-xs text-gray-400">AI Specialist</p>
+                            <p class="font-medium">{{ $course->teacher->name }}</p>
+                            <p class="text-xs text-gray-400">{{ $course->teacher->specialization }}</p>
                         </div>
                     </div>
-                    <button class="w-full py-2 border border-lime-accent text-lime-accent rounded-lg font-medium hover:bg-lime-accent/10 transition">
+                   <a href="{{ route('admin.teachers.show', $course->teacher->slug) }}">
+                     <button class="w-full py-2 border border-lime-accent text-lime-accent rounded-lg font-medium hover:bg-lime-accent/10 transition">
                         View Profile
                     </button>
+                   </a>
                 </div>
 
                 <!-- Quick Stats -->

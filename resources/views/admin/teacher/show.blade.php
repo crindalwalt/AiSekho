@@ -100,7 +100,7 @@
                         <h3 class="text-xl font-bold">Courses Teaching</h3>
                     </div>
                     <div class="divide-y divide-gray-800">
-                        <a href="{{ route('courses.show', 1) }}" class="p-6 hover:bg-white/5 transition block">
+                        <a href="#" class="p-6 hover:bg-white/5 transition block">
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h4 class="font-bold">Mastering ChatGPT</h4>
@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('courses.show', 2) }}" class="p-6 hover:bg-white/5 transition block">
+                        <a href="#" class="p-6 hover:bg-white/5 transition block">
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h4 class="font-bold">Machine Learning Advanced</h4>
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('courses.show', 3) }}" class="p-6 hover:bg-white/5 transition block">
+                        <a href="#" class="p-6 hover:bg-white/5 transition block">
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h4 class="font-bold">Deep Learning Fundamentals</h4>

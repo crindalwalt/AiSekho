@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
@@ -34,7 +35,7 @@ Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
     Route::get('/courses', [adminController::class, 'courseIndex'])->name('admin.courses.index');
     Route::get('/courses/create', [adminController::class, 'courseCreate'])->name('admin.courses.create');
     Route::post('/courses', [adminController::class, 'courseStore'])->name('admin.courses.store');
-    Route::get('/courses/show', [adminController::class, 'courseShow'])->name('admin.courses.show');
+    Route::get('/courses/show/{slug}', [adminController::class, 'courseShow'])->name('admin.courses.show');
     Route::get('/courses/index', [adminController::class, 'courseEdit'])->name('admin.courses.edit');
 
     // Students
@@ -48,7 +49,7 @@ Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
     // Teachers
     Route::get('/teachers', [adminController::class, 'teacherIndex'])->name('admin.teachers.index');
     Route::get('/teachers/create', [adminController::class, 'teacherCreate'])->name('admin.teachers.create');
-    Route::post('/teachers', [adminController::class, 'teacherStore'])->name('admin.teachers.store');
+    Route::post('/teachers', [adminController::class, 'teacherAdminStore'])->name('admin.teachers.store');
     Route::get('/teachers/show', [adminController::class, 'teacherShow'])->name('admin.teachers.show');
     Route::get('/teachers/index', [adminController::class, 'teacherEdit'])->name('admin.teachers.index');
 });
@@ -56,15 +57,29 @@ Route::prefix('admin')->middleware(['auth','verified'])->group(function(){
 
 // Public dashboard route
 
+// Student and Teacher Dashboard Routes
+
+
 Route::get('/student/dashboard', [adminController::class, 'dashboardstudent'])
     ->middleware(['auth','verified'])
     ->name('student.dashboard');
-    Route::get('/studentdashboard', [adminController::class, 'dashboardstudent'])
+
+    Route::get('/studentdashboard', [UserController::class, 'dashboardstudent'])
+    ->middleware(['auth','verified'])->name('student.dashboard');
+
+
+
+    // Teacher Dashboard Route
+
+
+ Route::get('/teacher/dashboard', [UserController::class, 'dashboardteacher'])->middleware(['auth','verified'])->name('teacher.dashboard');
+Route::post('/teacher/courses', [UserController::class, 'teacherUserStore'])
     ->middleware(['auth','verified'])
-    ->name('student.dashboard');
-    Route::get('/teacher/dashboard', [adminController::class, 'dashboardteacher'])
-    ->middleware(['auth','verified'])
-    ->name('teacher.dashboard');
+    ->name('teacher.courses.store');
+
+
+
+
 
 Route::get('/dashboard',
 function () {

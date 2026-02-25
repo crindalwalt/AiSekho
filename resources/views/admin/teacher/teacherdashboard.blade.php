@@ -55,43 +55,132 @@
                         <h3 class="text-xl font-bold tracking-tight">Create New Course</h3>
                     </div>
                     
-                    <form action="#" method="POST" enctype="multipart/form-data" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2 ml-1">Course Title</label>
-                                <input type="text" placeholder="e.g. Advanced Laravel 13" class="w-full rounded-xl p-4 focus:ring-2 focus:ring-[#d9f99d] outline-none transition">
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2 ml-1">Category</label>
-                                <select class="w-full rounded-xl p-4 outline-none">
-                                    <option>Web Development</option>
-                                    <option>Artificial Intelligence</option>
-                                    <option>Data Science</option>
-                                    <option>Mobile Apps</option>
-                                </select>
-                            </div>
-                        </div>
+                  <form action="{{ route('teacher.courses.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
 
-                        <div>
-                            <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2 ml-1">Course Description</label>
-                            <textarea rows="4" placeholder="What will students learn in this course?" class="w-full rounded-xl p-4 outline-none"></textarea>
-                        </div>
+    <!-- Course Title -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Course Title</label>
+        <input type="text" name="name" class="w-full rounded-xl p-4 outline-none">
+        @error('name') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
+    </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2 ml-1">Price ($)</label>
-                                <input type="number" placeholder="49" class="w-full rounded-xl p-4 outline-none">
-                            </div>
-                            <div>
-                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest block mb-2 ml-1">Course Thumbnail</label>
-                                <input type="file" class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#d9f99d] file:text-black hover:file:bg-[#bef264] cursor-pointer">
-                            </div>
-                        </div>
+    <!-- Excerpt -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Short Description</label>
+        <input type="text" name="excerpt" class="w-full rounded-xl p-4 outline-none">
+        @error('excerpt') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
+    </div>
 
-                        <button type="submit" class="btn-lime w-full py-4 text-lg shadow-lg shadow-[#d9f99d]/10 mt-4">
-                            Publish Course Now
-                        </button>
-                    </form>
+    <!-- Description -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Description</label>
+        <textarea name="description" rows="4" class="w-full rounded-xl p-4 outline-none"></textarea>
+        @error('description') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
+    </div>
+
+  
+
+    <!-- Category -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Category</label>
+        <select name="category" class="w-full rounded-xl p-4 outline-none">
+            <option value="Web Development">Web Development</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Mobile Apps">Mobile Apps</option>
+        </select>
+        @error('category')
+            <p class="text-red-500 text-xs">{{ $message }}</p>
+            
+        @enderror
+    </div>
+
+    <!-- Level -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Level</label>
+        <select name="level" class="w-full rounded-xl p-4 outline-none">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+        @error('level')
+            <p class="text-red-500 text-xs">{{ $message }}</p>
+            
+        @enderror
+    </div>
+
+    <!-- Duration -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Duration (Hours)</label>
+        <input type="number" name="duration" class="w-full rounded-xl p-4 outline-none">
+        @error('duration')
+            <p class="text-red-500 text-xs">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <!-- Video URL -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Intro Video URL</label>
+        <input type="text" name="video_url" class="w-full rounded-xl p-4 outline-none">
+    </div>
+
+    <!-- Read Time -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Read Time (Minutes)</label>
+        <input type="number" name="read_time" class="w-full rounded-xl p-4 outline-none">
+    </div>
+
+    <!-- Lessons Count -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Total Lessons</label>
+        <input type="number" name="lessons_count" class="w-full rounded-xl p-4 outline-none">
+        @error('lessons_count')
+            <p class="text-red-500 text-xs">{{ $message }}</p>  
+        @enderror
+    </div>
+
+    <!-- Price -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Price</label>
+        <input type="number" step="0.01" name="price" class="w-full rounded-xl p-4 outline-none">
+        @error('price')
+            <p class="text-red-500 text-xs">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <!-- Discount Price -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Discount Price</label>
+        <input type="number" step="0.01" name="discount_price" class="w-full rounded-xl p-4 outline-none">
+        @error('discount_price')
+            <p class="text-red-500 text-xs">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <!-- Thumbnail -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Thumbnail</label>
+        <input type="file" name="thumbnail">
+    </div>
+
+    <!-- Status -->
+    <div>
+        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Status</label>
+        <select name="status" class="w-full rounded-xl p-4 outline-none">
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <option value="inactive">Inactive</option>
+        </select>
+        @error('status')
+            <p class="text-red-500 text-xs">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <button type="submit" class="btn-lime w-full py-4 mt-4">
+        Publish Course
+    </button>
+</form>
                 </section>
 
                 <section class="space-y-8">

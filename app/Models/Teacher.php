@@ -13,7 +13,7 @@ public function  courses(){
     return $this->hasMany(Course::class, 'teacher_id');
 }
 
-
+        protected $guarded = [];
 
     /** @use HasFactory<\Database\Factories\TeacherFactory> */
     use HasFactory;

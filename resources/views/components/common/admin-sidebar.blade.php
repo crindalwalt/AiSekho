@@ -38,10 +38,15 @@
 
     </nav>
 
-    <div class="p-4 border-t border-gray-800">
-        <form action="{{ route('logout') }}" method="POST"> 
-            @csrf
-            <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg text-sm font-bold hover:bg-red-700 transition">Logout</button>
-            </form>
-    </div>
+   <div class="p-4 border-t border-gray-800">
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit"
+            class="sidebar-link w-full flex items-center space-x-3 p-3 rounded-xl 
+                   text-gray-400 hover:bg-red-600 hover:text-white transition">
+            <span>🚪</span>
+            <span class="text-sm font-medium">Logout</span>
+        </button>
+    </form>
+</div>
 </aside>

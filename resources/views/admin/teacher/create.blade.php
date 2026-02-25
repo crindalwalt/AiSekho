@@ -15,142 +15,158 @@
                 <h3 class="text-xl font-bold">Teacher Information</h3>
             </div>
             <div class="p-8">
-                <form action="{{ route('admin.teachers.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
-                    @csrf
+              <form action="{{ route('admin.teachers.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+    @csrf
 
-                    <!-- Name -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-300 mb-3">Full Name</label>
-                        <input type="text" name="name" placeholder="e.g., Dr. Ahmed Hassan" 
-                            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                            @error("name")
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
-                            @enderror
-                    </div>
+    <!-- Course Title -->
+    <div>
+        <label class="block text-sm font-bold text-gray-300 mb-3">Course Title</label>
+        <input type="text" name="name" placeholder="e.g., Complete Web Development Bootcamp"
+            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+        @error("name")
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
 
-                    <!-- Email -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-300 mb-3">Email Address</label>
-                        <input type="email" name="email" placeholder="teacher@example.com" 
-                            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                            @error("email")
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>     
-                            @enderror
-                    </div>
+    <!-- Short Description -->
+    <div>
+        <label class="block text-sm font-bold text-gray-300 mb-3">Short Description</label>
+        <input type="text" name="excerpt" placeholder="Brief summary of the course"
+            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+        @error("excerpt")
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
 
-                    <div class="grid grid-cols-2 gap-6">
-                        <!-- Phone -->
-                        <div>
-                            <label class="block text-sm font-bold text-gray-300 mb-3">Phone Number</label>
-                            <input type="tel" name="phone" placeholder="+92 300 1234567" 
-                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                @error("phone")
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                        </div>
+    <!-- Description -->
+    <div>
+        <label class="block text-sm font-bold text-gray-300 mb-3">Description</label>
+        <textarea name="description" rows="4" placeholder="Write detailed course description..."
+            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition resize-none"></textarea>
+        @error("description")
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
 
-                        <!-- Qualification -->
-                        <div>
-                            <label class="block text-sm font-bold text-gray-300 mb-3">Qualification</label>
-                            <select name="qualification" 
-                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                <option value="">Select Qualification</option>
-                                <option value="bachelor">Bachelor's Degree</option>
-                                <option value="master">Master's Degree</option>
-                                <option value="phd">PhD</option>
-                                <option value="certificate">Professional Certificate</option>
-                            </select>
-                            @error("qualification")
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
-                            @enderror
-                        </div>
-                    </div>
+    <div class="grid grid-cols-2 gap-6">
+        <!-- Category -->
+        <div>
+            <label class="block text-sm font-bold text-gray-300 mb-3">Category</label>
+            <select name="category"
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                <option value="Web Development">Web Development</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Mobile Apps">Mobile Apps</option>
+            </select>
+            @error("category")
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
 
-                    <!-- Specialty -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-300 mb-3">Specialty/Expertise</label>
-                        <input type="text" name="specialty" placeholder="e.g., AI & Machine Learning" 
-                            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                            @error("specialty")
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
-                            @enderror
-                    </div>
+        <!-- Level -->
+        <div>
+            <label class="block text-sm font-bold text-gray-300 mb-3">Level</label>
+            <select name="level"
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+            @error("level")
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
 
-                    <!-- Bio -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-300 mb-3">Biography</label>
-                        <textarea name="bio" rows="4" placeholder="Write a brief biography for the teacher..." 
-                            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition resize-none"></textarea>
-                            @error("bio")
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p> 
-                            @enderror
-                    </div>
+    <div class="grid grid-cols-2 gap-6">
+        <!-- Duration -->
+        <div>
+            <label class="block text-sm font-bold text-gray-300 mb-3">Duration (Hours)</label>
+            <input type="number" name="duration" placeholder="40"
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+            @error("duration")
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
 
-                    <div class="grid grid-cols-2 gap-6">
-                        <!-- Experience (Years) -->
-                        <div>
-                            <label class="block text-sm font-bold text-gray-300 mb-3">Years of Experience</label>
-                            <input type="number" name="experience_years" placeholder="10" min="0" 
-                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                       @error("experience_years")
-                                       <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                       @enderror
-                        </div>
+        <!-- Total Lessons -->
+        <div>
+            <label class="block text-sm font-bold text-gray-300 mb-3">Total Lessons</label>
+            <input type="number" name="lessons_count" placeholder="25"
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+            @error("lessons_count")
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
 
-                        <!-- Hourly Rate -->
-                        <div>
-                            <label class="block text-sm font-bold text-gray-300 mb-3">Hourly Rate ($)</label>
-                            <input type="number" name="hourly_rate" placeholder="50" step="0.01" 
-                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                        @error("hourly_rate")
-                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
-                        </div>
-                    </div>
+    <div class="grid grid-cols-2 gap-6">
+        <!-- Price -->
+        <div>
+            <label class="block text-sm font-bold text-gray-300 mb-3">Price ($)</label>
+            <input type="number" step="0.01" name="price" placeholder="99"
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+            @error("price")
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
 
-                    <!-- Profile Picture -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-300 mb-3">Profile Picture</label>
-                        <div class="border-2 border-dashed border-gray-700 rounded-lg p-6 text-center hover:border-lime-accent/50 transition cursor-pointer">
-                            <input type="file" name="profile_picture" accept="image/*" class="hidden" id="profile-picture">
-                            <label for="profile-picture" class="cursor-pointer">
-                                <p class="text-gray-400">Click to upload or drag and drop</p>
-                                <p class="text-xs text-gray-500 mt-1">PNG, JPG, GIF up to 10MB</p>
-                            </label>
-                        </div>
-                    </div>
+        <!-- Discount Price -->
+        <div>
+            <label class="block text-sm font-bold text-gray-300 mb-3">Discount Price ($)</label>
+            <input type="number" step="0.01" name="discount_price" placeholder="79"
+                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+            @error("discount_price")
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
 
-                    <!-- Status -->
-                    <div>
-                        <label class="block text-sm font-bold text-gray-300 mb-3">Status</label>
-                        <div class="flex gap-4">
-                            <label class="flex items-center">
-                                <input type="radio" name="status" value="active" checked class="mr-2">
-                               
-                                    
-                                
-                                <span class="text-sm text-gray-300">Active</span>
-                            </label>
-                             @error("status")
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                 @enderror
-                            <label class="flex items-center">
-                                <input type="radio" name="status" value="inactive" class="mr-2">
-                                <span class="text-sm text-gray-300">Inactive</span>
-                            </label>
-                        </div>
-                    </div>
+    <!-- Video URL -->
+    <div>
+        <label class="block text-sm font-bold text-gray-300 mb-3">Intro Video URL</label>
+        <input type="text" name="video_url" placeholder="https://youtube.com/..."
+            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+    </div>
 
-                    <!-- Buttons -->
-                    <div class="flex gap-4 pt-6">
-                        <button type="submit" class="flex-1 bg-lime-accent text-black py-3 rounded-lg font-bold hover:bg-lime-500 transition">
-                            Create Teacher
-                        </button>
-                        <a href="#" class="flex-1 bg-gray-700 text-white py-3 rounded-lg font-bold hover:bg-gray-600 transition text-center">
-                            Cancel
-                        </a>
-                    </div>
-                </form>
+    <!-- Thumbnail -->
+    <div>
+        <label class="block text-sm font-bold text-gray-300 mb-3">Thumbnail</label>
+        <div class="border-2 border-dashed border-gray-700 rounded-lg p-6 text-center hover:border-lime-accent/50 transition cursor-pointer">
+            <input type="file" name="thumbnail" class="hidden" id="thumbnail">
+            <label for="thumbnail" class="cursor-pointer">
+                <p class="text-gray-400">Click to upload or drag and drop</p>
+                <p class="text-xs text-gray-500 mt-1">PNG, JPG up to 10MB</p>
+            </label>
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div>
+        <label class="block text-sm font-bold text-gray-300 mb-3">Status</label>
+        <div class="flex gap-4">
+            <label class="flex items-center">
+                <input type="radio" name="status" value="draft" checked class="mr-2">
+                <span class="text-sm text-gray-300">Draft</span>
+            </label>
+            <label class="flex items-center">
+                <input type="radio" name="status" value="published" class="mr-2">
+                <span class="text-sm text-gray-300">Published</span>
+            </label>
+        </div>
+        @error("status")
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <!-- Button -->
+    <div class="pt-6">
+        <button type="submit" class="w-full bg-lime-accent text-black py-3 rounded-lg font-bold hover:bg-lime-500 transition">
+            Publish Course
+        </button>
+    </div>
+</form>
             </div>
         </div>
     </div>
