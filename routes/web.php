@@ -29,7 +29,7 @@ Route::get('/course-detail/{slug}', [CourseController::class, 'singleCourse'])->
 |-------------------------------------------------  -------------------------
 */
 
-Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'verified', AdminCheck::class])->group(function () {
 
     Route::get('/dashboard', [adminController::class, 'dashboard'])->name('admin.dashboard');
 
@@ -58,7 +58,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'isAdmin'])->group(funct
 
 
 // Public dashboard route
-Route::prefix("/student")->middleware(['auth', 'verified', 'isStudent'])->name("student.")->group(function () {
+Route::prefix("/student")->middleware(['auth', 'verified', StudentCheck::class])->name("student.")->group(function () {
 
     Route::get('/dashboard', [adminController::class, 'dashboardstudent'])
         ->name('dashboard');

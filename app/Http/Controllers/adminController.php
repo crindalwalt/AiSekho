@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Teacher;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -14,80 +15,104 @@ class AdminController extends Controller
     }
 
     // Courses
-    public function courseCreate(){
+    public function courseCreate()
+    {
         return view('admin.courses.create');
     }
 
-   
-   
-   
-   public function courseIndex(){
-    $listCourse = Course::latest()->get();
 
-    return view('admin.courses.index', compact('listCourse'));
-}
 
-    public function courseShow(){
-        
+
+    public function courseIndex()
+    {
+        $listCourse = Course::latest()->get();
+
+        return view('admin.courses.index', compact('listCourse'));
+    }
+
+    public function courseShow()
+    {
+
         return view('admin.courses.show');
     }
-// Course Store Method
+    // Course Store Method
     public function courseStore(Request $request)
     {
         $request->validate([
-            'name'=>['required', 'string', 'max:255'],
-            'description'=>['required', 'string'],
-            "price"=>['required', 'numeric'],
-            "duration"=>['required', 'string'],
-            "category"=>['required', 'string'],
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            "price" => ['required', 'numeric'],
+            "duration" => ['required', 'string'],
+            "category" => ['required', 'string'],
             // 'teacher_id'=>['required', 'exists:teachers,id'],
-            "level"=>['required', 'string'],
+            "level" => ['required', 'string'],
+            "thumbnail" => ["required"]
         ]);
 
-       
+        // image upload
+        if ($request->hasFile("thumbnail")) {
+            $image = $request->file("thumbnail");
+            $imageName = "IMG-" . time()  . "." . $image->getClientOriginalExtension();
+            $image->storeAs("course-thumbnails", $imageName, "public");
+        }
+
+
+
+
+        $course_slug = Str::slug($request->name);
         Course::create([
-            'name' => $request->title,
+            'name' => $request->name,
+            'excerpt' => $request->excerpt ?? "",
             'description' => $request->description,
             'price' => $request->price,
             'duration' => $request->duration,
             'category' => $request->category,
-            // 'teacher_id' => $request->teacher_id,
+            'teacher_id' => 1,
             'level' => $request->level,
+            'slug' => $course_slug,
+            'thumbnail' => $imageName ,
         ]);
         return redirect()->route('admin.courses.index')
             ->with('success', 'Course created successfully!');
     }
 
     // Students
-    public function studentIndex(){
+    public function studentIndex()
+    {
         return view('admin.student.index');
     }
 
-    public function studentShow(){
+    public function studentShow()
+    {
         return view('admin.student.show');
     }
 
     // Teachers
-    public function teacherCreate(){
+    public function teacherCreate()
+    {
         return view('admin.teacher.create');
     }
 
-    public function teacherIndex(){
+    public function teacherIndex()
+    {
         return view('admin.teacher.index');
     }
 
-    public function teacherShow(){
+    public function teacherShow()
+    {
         return view('admin.teacher.show');
     }
-      public function dashboardstudent(){
+    public function dashboardstudent()
+    {
         return view('admin.student.studentdashboard');
     }
-     public function dashboardteacher(){
+    public function dashboardteacher()
+    {
         return view('admin.teacher.teacherdashboard');
-    } 
+    }
 
 
-/// Teacher Store Method
+    /// Teacher Store Method
 
     public function teacherStore(Request $request)
     {

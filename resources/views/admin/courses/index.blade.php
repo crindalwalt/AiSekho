@@ -44,6 +44,7 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="text-gray-500 text-sm uppercase">
+                            <th class="px-8 py-5 font-medium">Course Thumbnail</th>
                             <th class="px-8 py-5 font-medium">Course Name</th>
                             <th class="px-8 py-5 font-medium">Instructor</th>
                             <th class="px-8 py-5 font-medium">Students</th>
@@ -56,13 +57,16 @@
                        @if ($listCourse->isNotEmpty())
                        @foreach ($listCourse as $item )
                             <tr class="hover:bg-white/5 transition">
+                                <td>
+                                    <img src="{{ asset('storage/course-thumbnails/' . $item->thumbnail) }}" alt="Course Thumbnail" class="w-16 h-16 rounded-lg object-cover">
+                                </td>
                             <td class="px-8 py-5">
                                 <div>
-                                    <p class="text-sm font-medium">{{ $item->title }}</p>
+                                    <p class="text-sm font-medium">{{ $item->name }}</p>
                                     <p class="text-xs text-gray-400 mt-1">{{ $item->category }}</p>
                                 </div>
                             </td>
-                            <td class="px-8 py-5 text-sm text-gray-300">{{ $item->name }}</td>
+                            <td class="px-8 py-5 text-sm text-gray-300">{{ $item->teacher->name }}</td>
                             <td class="px-8 py-5 text-sm font-bold">{{ $item->students_count }}</td>
                             <td class="px-8 py-5 text-sm font-bold">${{ $item->price }}</td>
                             <td class="px-8 py-5">
@@ -70,14 +74,14 @@
                             </td>
                             <td class="px-8 py-5">
                                 <div class="flex gap-2">
-                                    <a href="{{ route('admin.courses.show') }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
-                                    <a href="{{ route('admin.courses.index') }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Edit</a>
+                                    <a href="{{ route('admin.courses.show', $item->slug) }}" class="text-lime-accent hover:text-lime-300 text-sm font-medium">View</a>
+                                    <a href="{{ route('admin.courses.edit', $item->slug) }}" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Edit</a>
                                     <button class="text-red-400 hover:text-red-300 text-sm font-medium">Delete</button>
                                 </div>
                             </td>
                         </tr>
                        @endforeach
-                           
+
                        @endif
                         <!-- <tr class="hover:bg-white/5 transition">
                             <td class="px-8 py-5">

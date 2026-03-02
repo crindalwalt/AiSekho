@@ -2,8 +2,8 @@
     <div class="p-10">
         <!-- Header -->
         <div class="mb-8">
-            <a href="{{ route('admin.courses.index') }}" 
-               class="text-lime-accent hover:text-lime-300 text-sm font-medium flex items-center gap-2 mb-4">
+            <a href="{{ route('admin.courses.index') }}"
+                class="text-lime-accent hover:text-lime-300 text-sm font-medium flex items-center gap-2 mb-4">
                 ← Back to Courses
             </a>
             <h1 class="text-4xl font-bold">Create New Course</h1>
@@ -17,33 +17,31 @@
             </div>
 
             <div class="p-8">
-                <form action="{{ route('admin.courses.store') }}" enctype="multipart/form-data" method="POST" class="space-y-6">
+                <form action="{{ route('admin.courses.store') }}" enctype="multipart/form-data" method="POST"
+                    class="space-y-6">
                     @csrf
 
                     <!-- Course Title -->
                     <div>
                         <label class="block text-sm font-bold text-gray-300 mb-3">Course Title</label>
-                        <input type="text" name="name"
-                               value="{{ old('name') }}"
-                               placeholder="e.g., Mastering Advanced JavaScript"
-                               class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                               @error("name")
-                               <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                   
-                               @enderror
+                        <input type="text" name="name" value="{{ old('name') }}"
+                            placeholder="e.g., Mastering Advanced JavaScript"
+                            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                        @error('name')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                     
-                
+
+
 
                     <!-- Course Description -->
                     <div>
                         <label class="block text-sm font-bold text-gray-300 mb-3">Description</label>
-                        <textarea name="description" rows="4"
-                                  placeholder="Write a compelling description for your course..."
-                                  class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition resize-none">{{ old('description') }}</textarea>
-                                  @error("description")
-                                  <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                  @enderror
+                        <textarea name="description" rows="4" placeholder="Write a compelling description for your course..."
+                            class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition resize-none">{{ old('description') }}</textarea>
+                        @error('description')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
@@ -52,62 +50,62 @@
                             <label class="block text-sm font-bold text-gray-300 mb-3">Price</label>
                             <div class="flex items-center">
                                 <span class="text-gray-400 mr-2">$</span>
-                                <input type="number" name="price"
-                                       value="{{ old('price') }}"
-                                       placeholder="99.99" step="0.01"
-                                       class="flex-1 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                       @error("price")
-                                       <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                       @enderror
+                                <input type="number" name="price" value="{{ old('price') }}" placeholder="99.99"
+                                    step="0.01"
+                                    class="flex-1 px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                @error('price')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
 
                         <!-- Duration -->
                         <div>
                             <label class="block text-sm font-bold text-gray-300 mb-3">Duration (Hours)</label>
-                            <input type="number" name="duration"
-                                   value="{{ old('duration') }}"
-                                   placeholder="40"
-                                   class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                      @error("duration")    
-                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                        @enderror
+                            <input type="number" name="duration" value="{{ old('duration') }}" placeholder="40"
+                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                            @error('duration')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
                         <!-- Instructor -->
-                        <<!-- Course Thumbnail -->
-<div>
-    <label class="block text-sm font-bold text-gray-300 mb-3">Course Thumbnail</label>
-    <input type="file" name="thumbnail"
-           class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-  
-</div>
-                                
-                        <!-- Category -->
-                        <div>
-                            <label class="block text-sm font-bold text-gray-300 mb-3">Category</label>
-                            <select name="category"
+                       <!-- Course Thumbnail -->
+                            <div>
+                                <label class="block text-sm font-bold text-gray-300 mb-3">Course Thumbnail</label>
+                                <input type="file" name="thumbnail"
                                     class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
-                                <option value="">Select Category</option>
-                                <option value="ai" {{ old('category') == 'ai' ? 'selected' : '' }}>AI & Machine Learning</option>
-                                <option value="design" {{ old('category') == 'design' ? 'selected' : '' }}>Design</option>
-                                <option value="development" {{ old('category') == 'development' ? 'selected' : '' }}>Development</option>
-                                <option value="business" {{ old('category') == 'business' ? 'selected' : '' }}>Business</option>
-                            </select>
-                            @error("category")
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                
-                            @enderror
-                        </div>
+
+                            </div>
+
+                            <!-- Category -->
+                            <div>
+                                <label class="block text-sm font-bold text-gray-300 mb-3">Category</label>
+                                <select name="category"
+                                    class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white focus:border-lime-accent focus:ring-2 focus:ring-lime-accent/20 transition">
+                                    <option value="">Select Category</option>
+                                    <option value="ai" {{ old('category') == 'ai' ? 'selected' : '' }}>AI & Machine
+                                        Learning</option>
+                                    <option value="design" {{ old('category') == 'design' ? 'selected' : '' }}>Design
+                                    </option>
+                                    <option value="development"
+                                        {{ old('category') == 'development' ? 'selected' : '' }}>Development</option>
+                                    <option value="business" {{ old('category') == 'business' ? 'selected' : '' }}>
+                                        Business</option>
+                                </select>
+                                @error('category')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
                     </div>
 
                     <!-- Level -->
                     <div>
                         <label class="block text-sm font-bold text-gray-300 mb-3">Level</label>
                         <div class="flex gap-4">
-                            @foreach(['beginner','intermediate','advanced'] as $level)
+                            @foreach (['beginner', 'intermediate', 'advanced'] as $level)
                                 <label class="flex items-center">
                                     <input type="radio" name="level" value="{{ $level }}"
                                         {{ old('level') == $level ? 'checked' : '' }} class="mr-2">
@@ -120,11 +118,11 @@
                     <!-- Buttons -->
                     <div class="flex gap-4 pt-6">
                         <button type="submit"
-                                class="flex-1 bg-lime-accent text-black py-3 rounded-lg font-bold hover:bg-lime-500 transition">
+                            class="flex-1 bg-lime-accent text-black py-3 rounded-lg font-bold hover:bg-lime-500 transition">
                             Create Course
                         </button>
                         <a href="{{ route('admin.courses.index') }}"
-                           class="flex-1 bg-gray-700 text-white py-3 rounded-lg font-bold hover:bg-gray-600 transition text-center">
+                            class="flex-1 bg-gray-700 text-white py-3 rounded-lg font-bold hover:bg-gray-600 transition text-center">
                             Cancel
                         </a>
                     </div>
